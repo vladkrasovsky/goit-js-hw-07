@@ -1,12 +1,10 @@
 import { galleryItems } from "./gallery-items.js";
 
-const galleryMarkup = galleryItems.map(createGalleryMarkup).join("");
-
 const refs = {
   gallery: document.querySelector(".gallery"),
 };
 
-refs.gallery.innerHTML = galleryMarkup;
+refs.gallery.innerHTML = galleryItems.map(createGalleryItemMarkup).join("");
 refs.gallery.addEventListener("click", handleModalOpen);
 
 function handleModalOpen(e) {
@@ -36,7 +34,7 @@ function showModal(src) {
   modal.show();
 }
 
-function createGalleryMarkup({ preview, original, description }) {
+function createGalleryItemMarkup({ preview, original, description }) {
   return `
     <div class="gallery__item">
       <a class="gallery__link" href="${original}">
